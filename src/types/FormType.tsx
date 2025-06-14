@@ -31,3 +31,11 @@ export interface checkboxFieldType{
     addOption: () => void,
     updateOption: (index: number, value: string) => void,
 }
+
+export interface normalBtnType{
+    type: "submit"|"button",
+    disabled:boolean,
+    color:string,
+    onClick:() => void,
+    title:string,
+}
