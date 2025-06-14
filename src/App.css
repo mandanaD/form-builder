@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: YekanBakh;
+    src: url(assets/fonts/YekanBakh/YekanBakh-Thin.woff2) format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: YekanBakh;
+    src: url(assets/fonts/YekanBakh/YekanBakh-Regular.woff2) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: YekanBakh;
+    src: url(assets/fonts/YekanBakh/YekanBakh-Bold.woff2) format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: YekanBakh;
+    src: url(assets/fonts/YekanBakh/YekanBakh-Black.woff2) format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: YekanBakh;
+    src: url(assets/fonts/YekanBakh/YekanBakh-Thin.woff2) format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: YekanBakh;
+    src: url(assets/fonts/YekanBakh/YekanBakh-Thin.woff2) format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: fallback;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(34, 34, 34, 0.26666666666666666);
+    border-radius: 6px;
+}
+
+body {
+    font-size: .9rem;
+    direction: rtl;
+    font-optical-sizing: auto;
+    font-family: 'YekanBakh', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+input:-webkit-autofill {
+    background-color: #f3f4f6 !important; /* Replace with your desired background color */
+    box-shadow: 0 0 0 30px #f3f4f6 inset !important; /* Prevents the shadow from showing the autofill background */
+    color: inherit !important; /* Keeps text color unchanged */
+}
+
+input:-moz-autofill {
+    background-color: #f3f4f6 !important;
+    box-shadow: 0 0 0 30px #f3f4f6 inset !important;
+    color: inherit !important;
+}
+
+input:-ms-autofill {
+    background-color: #f3f4f6 !important;
+    box-shadow: 0 0 0 30px #f3f4f6 inset !important;
+    color: inherit !important;
+}
