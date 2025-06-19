@@ -63,7 +63,7 @@ const ChosenPreview = ({
                 definedFields.length > 0 ? (
                     definedFields.map((field, i) => (
                         <div key={i}
-                             onClick={() => setActiveFieldIndex(i)}
+                             onClick={() => activeFieldIndex === i ? "" : setActiveFieldIndex(i)}
                              className={`p-3 relative border rounded-xl cursor-pointer transition-all ease-linear ${activeFieldIndex === i ? "border-gray-500" : "border-gray-300/60"}`}
                         >
                             <label
@@ -74,7 +74,6 @@ const ChosenPreview = ({
                             {renderField(field)}
                             <div
                                 onClick={() => {
-                                    setActiveFieldIndex(activeFieldIndex > 0 ? (activeFieldIndex - 1) : -1)
                                     deleteField(i)
                                 }}
                                 className={`${activeFieldIndex === i ? "grid" : "hidden"} absolute size-5 place-content-center bg-gray-700 rounded-full text-white -top-1.5 -left-1.5`}>

@@ -4,13 +4,13 @@ import {
     faSquareCaretDown,
     faFileLines,
     faCheckDouble,
-    faParagraph, faXmark, faPlus
+    faParagraph, faXmark, faPlus, faGear
 } from "@fortawesome/free-solid-svg-icons";
 import type {IconDefinition} from "@fortawesome/free-regular-svg-icons";
 import {useState} from "react";
 import type {Field, optionsType} from "../types/FormType.tsx";
 
-const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex}: optionsType) => {
+const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIsOptionsOpen,isOptionsOpen}: optionsType) => {
     const availableFields: {
         question_type: Field["question_type"],
         text: string,
@@ -22,7 +22,6 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex}: opt
         {question_type: "MULTISELECT", text: "چند انتخابی", icon: faCheckDouble},
         {question_type: "BOOL", text: "چک باکس", icon: faFileLines},
     ]
-    const [isOptionsOpen, setIsOptionsOpen] = useState(false)
 
     const addField = (question_type: Field["question_type"]) => {
         const newField = {
@@ -41,9 +40,9 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex}: opt
     return (
         <>
             <div
-                className={`w-[250px] sm:border-transparent border  border-gray-300/60 sm:z-10 z-[70] bg-white overflow-auto right-0 sm:h-fit sm:max-h-none max-h-screen h-screen sm:sticky pt-4 top-0 transition-all duration-100 fixed px-3 gap-1 flex flex-col ${isOptionsOpen ? "translate-x-0" : "translate-x-[130%]"} sm:translate-x-0 `}>
+                className={`w-[250px] md:border-transparent border  border-gray-300/60 md:z-10 z-[70] bg-white overflow-auto right-0 md:h-fit md:max-h-none max-h-screen h-screen md:sticky pt-4 top-0 transition-all duration-100 fixed px-3 gap-1 flex flex-col ${isOptionsOpen ? "translate-x-0" : "translate-x-[130%]"} md:translate-x-0 `}>
                 <div
-                    className={"sm:hidden flex items-center justify-between pb-5 border-b-[0.5px] border-gray-300/60"}>
+                    className={"md:hidden flex items-center justify-between pb-5 border-b-[0.5px] border-gray-300/60"}>
                     <div className={"text-gray-800 text-sm"}>
                         فیلد ها
                     </div>
@@ -66,12 +65,8 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex}: opt
             </div>
             <div
                 onClick={() => setIsOptionsOpen(true)}
-                className={"bg-[#1A56DB24] px-4 py-1 sm:hidden min-w-12 min-h-12 size-12 bottom-20 rounded-full fixed "}>
-                <div className={"w-full h-full bg-[#1A56DB5C] rounded-full p-1"}>
-                    <div className={"w-full h-full bg-[#1A56DB] rounded-full grid place-content-center"}>
-                        <FontAwesomeIcon icon={faPlus} className={"text-xl text-white"}/>
-                    </div>
-                </div>
+                className={"bg-gray-700 z-30 md:hidden grid place-content-center min-w-12 min-h-12 size-12 bottom-20 mr-2 rounded-full fixed "}>
+                <FontAwesomeIcon icon={faPlus} className={"text-xl text-white"}/>
             </div>
         </>
     )
