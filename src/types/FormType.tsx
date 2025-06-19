@@ -14,6 +14,8 @@ export interface optionsType {
     definedFields: Field[],
     setDefinedFields: React.Dispatch<React.SetStateAction<Field[]>>,
     setActiveFieldIndex: React.Dispatch<React.SetStateAction<number>>,
+    isOptionsOpen: boolean,
+    setIsOptionsOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export interface chosenPreviewType {
@@ -23,19 +25,20 @@ export interface chosenPreviewType {
     updateOption: (index: number, value: string) => void,
     removeOption: (index: number) => void,
     addOption: () => void,
-    deleteField:(index: number) => void,
+    deleteField: (index: number) => void,
 }
-export interface checkboxFieldType{
-    field:Field,
-    removeOption:(index: number) => void,
+
+export interface checkboxFieldType {
+    field: Field,
+    removeOption: (index: number) => void,
     addOption: () => void,
     updateOption: (index: number, value: string) => void,
 }
 
-export interface normalBtnType{
-    type: "submit"|"button",
-    disabled:boolean,
-    color:string,
-    onClick:() => void,
-    title:string,
+export interface normalBtnType {
+    type: "submit" | "button",
+    disabled?: boolean,
+    color?: string,
+    onClick: () => void,
+    title: string,
 }
