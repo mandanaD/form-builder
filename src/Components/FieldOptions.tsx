@@ -4,10 +4,9 @@ import {
     faSquareCaretDown,
     faFileLines,
     faCheckDouble,
-    faParagraph, faXmark, faPlus, faGear
+    faParagraph, faXmark, faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import type {IconDefinition} from "@fortawesome/free-regular-svg-icons";
-import {useState} from "react";
 import type {Field, optionsType} from "../types/FormType.tsx";
 
 const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIsOptionsOpen,isOptionsOpen}: optionsType) => {
