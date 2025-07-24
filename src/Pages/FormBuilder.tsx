@@ -12,17 +12,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const fieldSchema = (questionType: Field['question_type']) =>
     z.object({
-        label: z.string().min(1, "عنوان الزامی است"),
+        label: z.string().min(1, "Label is required"),
         name: z
             .string()
-            .min(1, "نام فیلد الزامی است")
-            .regex(/^[a-zA-Z_][a-zA-Z0-9_]*$/, "نام فیلد باید به انگلیسی و بدون فاصله باشد"),
+            .min(1, "Field name is required.")
+            .regex(/^[a-zA-Z_][a-zA-Z0-9_]*$/, "Field name must be in English and contain no spaces."),
         placeholder: questionType === "BOOL"
             ? z.string().optional()
-            : z.string().min(1, "متن کمکی الزامی است"),
+            : z.string().min(1, "Placeholder is required"),
         required: z.boolean(),
         options: questionType === "SELECT" || questionType === "MULTISELECT"
-            ? z.array(z.string().min(1, "گزینه‌ها نمی‌توانند خالی باشند")).min(1, "حداقل یک گزینه الزامی است")
+            ? z.array(z.string().min(1, "Options cannot be empty.")).min(1, "At least one option is required.")
             : z.array(z.string()).optional(),
         value: z.string().optional(),
         question_type: z.literal(questionType),
@@ -65,7 +65,7 @@ const FormBuilder: React.FC = () => {
         if (activeFieldIndex < 0) return;
 
         const updateOptions = [...definedFields];
-        updateOptions[activeFieldIndex].options.push(`گزینه ${updateOptions[activeFieldIndex].options.length + 1}`);
+        updateOptions[activeFieldIndex].options.push(`Option ${updateOptions[activeFieldIndex].options.length + 1}`);
         setDefinedFields(updateOptions);
     };
 
@@ -146,7 +146,7 @@ const FormBuilder: React.FC = () => {
             <div className="relative flex flex-col flex-1 py-4 rounded-2xl bg-white w-full shadow-[0px_0px_5px_0px_rgba(0,0,0,0.12)] border border-gray-100">
                 <header className="px-4 pb-3 flex items-center border-b border-gray-300/60">
                     <h1 className="text-base mb-1.5 text-gray-800 font-medium">
-                        ساخت فرم
+                        Form Builder
                     </h1>
                 </header>
                 <div className="flex-1 flex relative">
@@ -171,11 +171,11 @@ const FormBuilder: React.FC = () => {
                         <>
                             <form
                                 onSubmit={handleSubmit(onSubmit)}
-                                className={`w-[250px] sm:w-[300px] lg:border-none border-x border-gray-200 lg:z-[40] z-[70] bg-white overflow-auto left-0 lg:h-fit lg:max-h-none max-h-screen h-screen fixed lg:sticky top-0 border-l transition-all duration-100 p-4 space-y-6 ${isSetting ? "translate-x-0" : "-translate-x-[130%]"} lg:translate-x-0`}
+                                className={`w-[250px] sm:w-[300px] lg:border-none border-x border-gray-200 lg:z-[40] z-[70] bg-white overflow-auto right-0 lg:h-fit lg:max-h-none max-h-screen h-screen fixed lg:sticky top-0 border-l transition-all duration-100 p-4 space-y-6 ${isSetting ? "translate-x-0" : "translate-x-[130%]"} lg:translate-x-0`}
                             >
                                 <div className="lg:hidden flex items-center justify-between pb-5 border-b-[0.5px] border-gray-300/60">
                                     <div className="text-gray-800 text-sm">
-                                        تنظیمات فیلد
+                                        Field Settings
                                     </div>
                                     <div onClick={handleCloseSettings}>
                                         <FontAwesomeIcon icon={faXmark} className="text-gray-500 text-sm" />
@@ -190,7 +190,7 @@ const FormBuilder: React.FC = () => {
                                         render={({ field }) => (
                                             <div className="relative">
                                                 <label className="text-sm font-medium mb-1 text-[13px] w-fit flex justify-between items-center">
-                                                    متن سوال
+                                                    Question Content
                                                     <sup className="text-red-600 px-0.5">*</sup>
                                                 </label>
                                                 <textarea
@@ -199,7 +199,7 @@ const FormBuilder: React.FC = () => {
                                                         field.onChange(e);
                                                         updateField("label", e.target.value);
                                                     }}
-                                                    placeholder="متن سوال"
+                                                    placeholder="Question Content"
                                                     className={`w-full min-h-24 mt-2 px-3 py-3 rounded-lg bg-gray-100 border transition-all duration-200 ease-linear focus:border-[#FF8A4C] focus:shadow-[0_0_4px_0_#9A7F7680] ${errors.label ? 'border-red-500' : 'border-transparent'} focus:outline-none`}
                                                 />
                                                 {errors.label && <p className="text-red-500 text-xs mt-1 absolute">{errors.label.message}</p>}
@@ -213,7 +213,7 @@ const FormBuilder: React.FC = () => {
                                         render={({ field }) => (
                                             <div className="relative">
                                                 <label className="text-sm font-medium mb-1 text-[13px] w-fit flex justify-between items-center">
-                                                    عنوان
+                                                    Label
                                                     <sup className="text-red-600 px-0.5">*</sup>
                                                 </label>
                                                 <input
@@ -222,7 +222,7 @@ const FormBuilder: React.FC = () => {
                                                         field.onChange(e);
                                                         updateField("label", e.target.value);
                                                     }}
-                                                    placeholder="عنوان"
+                                                    placeholder="e.g. First Name, Age, City"
                                                     className={`w-full text-xs sm:text-sm mt-2 px-3 py-3 rounded-lg bg-gray-100 border transition-all duration-200 ease-linear focus:border-[#FF8A4C] focus:shadow-[0_0_4px_0_#9A7F7680] ${errors.label ? 'border-red-500' : 'border-transparent'} focus:outline-none`}
                                                 />
                                                 {errors.label && <p className="text-red-500 text-xs mt-1 absolute">{errors.label.message}</p>}
@@ -238,7 +238,7 @@ const FormBuilder: React.FC = () => {
                                     render={({ field }) => (
                                         <div className="relative">
                                             <label className="text-sm font-medium mb-1 text-[13px] w-fit flex justify-between items-center">
-                                                نام فیلد(انگلیسی)
+                                                Field Name (English)
                                                 <sup className="text-red-600 px-0.5">*</sup>
                                             </label>
                                             <input
@@ -248,6 +248,7 @@ const FormBuilder: React.FC = () => {
                                                     updateField("name", e.target.value);
                                                 }}
                                                 type="text"
+                                                placeholder={"e.g. first_name"}
                                                 className={`w-full text-xs sm:text-sm mt-2 px-3 py-3 rounded-lg bg-gray-100 border transition-all duration-200 ease-linear focus:border-[#FF8A4C] focus:shadow-[0_0_4px_0_#9A7F7680] ${errors.name ? 'border-red-500' : 'border-transparent'} focus:outline-none`}
                                             />
                                             {errors.name && <p className="text-red-500 text-xs mt-1 absolute">{errors.name.message}</p>}
@@ -263,7 +264,7 @@ const FormBuilder: React.FC = () => {
                                         render={({ field }) => (
                                             <div className="relative">
                                                 <label className="text-sm font-medium mb-1 text-[13px] w-fit flex justify-between items-center">
-                                                    متن کمکی
+                                                    Placeholder
                                                     <sup className="text-red-600 px-0.5">*</sup>
                                                 </label>
                                                 <input
@@ -273,6 +274,7 @@ const FormBuilder: React.FC = () => {
                                                         updateField("placeholder", e.target.value);
                                                     }}
                                                     type="text"
+                                                    placeholder={"e.g. Your full name"}
                                                     className={`w-full text-xs sm:text-sm mt-2 px-3 py-3 rounded-lg bg-gray-100 border transition-all duration-200 ease-linear focus:border-[#FF8A4C] focus:shadow-[0_0_4px_0_#9A7F7680] ${errors.placeholder ? 'border-red-500' : 'border-transparent'} focus:outline-none`}
                                                 />
                                                 {errors.placeholder && <p className="text-red-500 text-xs mt-1 absolute">{errors.placeholder.message}</p>}
@@ -287,7 +289,7 @@ const FormBuilder: React.FC = () => {
                                     <div>
                                         <div className="flex justify-between items-end">
                                             <label className="text-sm font-medium mb-1 text-[13px] w-fit flex justify-between items-center">
-                                                گزینه ها
+                                                Options
                                                 <sup className="text-red-600 px-0.5">*</sup>
                                             </label>
                                             <button
@@ -303,7 +305,7 @@ const FormBuilder: React.FC = () => {
                                                 key={i}
                                                 value={opt}
                                                 onChange={(e) => updateOption(i, e.target.value)}
-                                                placeholder={`گزینه ${i + 1}`}
+                                                placeholder={`Option ${i + 1}`}
                                                 className="w-full text-xs sm:text-sm mt-2 px-3 py-3 rounded-lg bg-gray-100 border transition-all duration-200 ease-linear focus:border-[#FF8A4C] focus:shadow-[0_0_4px_0_#9A7F7680] border-transparent focus:outline-none"
                                             />
                                         ))}
@@ -333,13 +335,13 @@ const FormBuilder: React.FC = () => {
                                             }`}
                                         />
                                     </button>
-                                    {definedFields[activeFieldIndex].required ? "اجباری" : "غیراجباری"}
+                                    {definedFields[activeFieldIndex].required ? "Required" : "Optional"}
                                 </div>
                             </form>
                             <button
                                 type="button"
                                 onClick={handleGearClick}
-                                className="bg-[#1D5E84] lg:hidden grid place-content-center min-w-12 min-h-12 size-12 bottom-20 left-4 sm:left-7 rounded-full fixed"
+                                className="bg-[#1D5E84] lg:hidden grid place-content-center min-w-12 min-h-12 size-12 bottom-20 right-4 sm:right-7 rounded-full fixed"
                             >
                                 <FontAwesomeIcon icon={faGear} className="text-xl text-white" />
                             </button>
@@ -352,7 +354,7 @@ const FormBuilder: React.FC = () => {
                             type="button"
                             onClick={handleFormSubmit}
                             color="bg-orange-500"
-                            title="ذخیره"
+                            title="Save"
                         />
                     </div>
                 </div>
