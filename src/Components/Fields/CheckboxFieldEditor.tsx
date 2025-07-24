@@ -33,7 +33,7 @@ const CheckboxFieldEditor = ({field, removeOption, updateOption, addOption}: che
                 <div className="text-xs sm:text-sm text-gray-400">
                     {field.placeholder || "Select options"}
                 </div>
-                <FontAwesomeIcon icon={faChevronDown} className={`mr-auto transition-transform ${
+                <FontAwesomeIcon icon={faChevronDown} className={`ml-auto transition-transform ${
                     isOpen ? "rotate-180" : "rotate-0"
                 } text-sm`}/>
             </div>
