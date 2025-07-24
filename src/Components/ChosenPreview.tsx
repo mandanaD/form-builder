@@ -68,7 +68,7 @@ const ChosenPreview = ({
                         >
                             <label
                                 className="text-sm font-medium mb-1 text-[13px] w-fit flex justify-between items-center">
-                                {field.label || "(بدون عنوان)"}
+                                {field.label || "(No Label)"}
                                 {field.required && <sup className="text-red-600 px-0.5">*</sup>}
                             </label>
                             {renderField(field)}
@@ -83,7 +83,7 @@ const ChosenPreview = ({
                     ))
                 ) : (
                     <div className={"sm:text-sm text-xs text-center text-gray-800 "}>
-                        هنوز هیچ فیلدی اضافه نشده است!اولین فیلد خود را از سمت راست اضافه کنید.
+                        No fields added yet. Start by adding your first field from the left.
                     </div>
                 )
             }

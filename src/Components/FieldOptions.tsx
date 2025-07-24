@@ -2,11 +2,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faTextWidth,
     faSquareCaretDown,
-    faFileLines,
     faCheckDouble,
     faParagraph, faXmark, faPlus
 } from "@fortawesome/free-solid-svg-icons";
-import type {IconDefinition} from "@fortawesome/free-regular-svg-icons";
+import {faCheckSquare, type IconDefinition} from "@fortawesome/free-regular-svg-icons";
 import type {Field, optionsType} from "../types/FormType.tsx";
 
 const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIsOptionsOpen,isOptionsOpen}: optionsType) => {
@@ -15,11 +14,11 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIs
         text: string,
         icon: IconDefinition
     }[] = [
-        {question_type: "TEXT", text: "متن کوتاه", icon: faTextWidth},
-        {question_type: "TEXTAREA", text: "متن بلند", icon: faParagraph},
-        {question_type: "SELECT", text: "تک انتخابی", icon: faSquareCaretDown},
-        {question_type: "MULTISELECT", text: "چند انتخابی", icon: faCheckDouble},
-        {question_type: "BOOL", text: "چک باکس", icon: faFileLines},
+        { question_type: "TEXT", text: "Short Text", icon: faTextWidth },
+        { question_type: "TEXTAREA", text: "Long Text", icon: faParagraph },
+        { question_type: "SELECT", text: "Single Select", icon: faSquareCaretDown },
+        { question_type: "MULTISELECT", text: "Multi Select", icon: faCheckDouble },
+        { question_type: "BOOL", text: "Checkbox", icon: faCheckSquare },
     ]
 
     const addField = (question_type: Field["question_type"]) => {
@@ -30,7 +29,7 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIs
             placeholder: "",
             required: false,
             value: "",
-            options: question_type === "SELECT" || question_type === "MULTISELECT" ? ["گزینه ۱"] : []
+            options: question_type === "SELECT" || question_type === "MULTISELECT" ? ["Option ۱"] : []
         }
         setDefinedFields([...definedFields, newField])
         setActiveFieldIndex(definedFields.length)
@@ -39,11 +38,11 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIs
     return (
         <>
             <div
-                className={`w-[250px] md:border-transparent border  border-gray-300/60 md:z-10 z-[70] bg-white overflow-auto right-0 md:h-fit md:max-h-none max-h-screen h-screen md:sticky pt-4 top-0 transition-all duration-100 fixed px-3 gap-1 flex flex-col ${isOptionsOpen ? "translate-x-0" : "translate-x-[130%]"} md:translate-x-0 `}>
+                className={`w-[250px] md:border-transparent border  border-gray-300/60 md:z-10 z-[70] bg-white overflow-auto left-0 md:h-fit md:max-h-none max-h-screen h-screen md:sticky pt-4 top-0 transition-all duration-100 fixed px-3 gap-1 flex flex-col ${isOptionsOpen ? "translate-x-0" : "-translate-x-[130%]"} md:translate-x-0 `}>
                 <div
                     className={"md:hidden flex items-center justify-between pb-5 border-b-[0.5px] border-gray-300/60"}>
                     <div className={"text-gray-800 text-sm"}>
-                        فیلد ها
+                       Fields
                     </div>
                     <div onClick={() => setIsOptionsOpen(false)}>
                         <FontAwesomeIcon icon={faXmark} className={"text-gray-500 text-sm"}/>
