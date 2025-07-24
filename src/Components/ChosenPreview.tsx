@@ -76,7 +76,7 @@ const ChosenPreview = ({
                                 onClick={() => {
                                     deleteField(i)
                                 }}
-                                className={`${activeFieldIndex === i ? "grid" : "hidden"} absolute size-5 place-content-center bg-gray-700 rounded-full text-white -top-1.5 -left-1.5`}>
+                                className={`${activeFieldIndex === i ? "grid" : "hidden"} absolute size-5 place-content-center bg-gray-700 rounded-full text-white -top-1.5 -right-1.5`}>
                                 <FontAwesomeIcon icon={faXmark} className={"text-xs"}/>
                             </div>
                         </div>

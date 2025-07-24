@@ -29,7 +29,7 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIs
             placeholder: "",
             required: false,
             value: "",
-            options: question_type === "SELECT" || question_type === "MULTISELECT" ? ["Option ۱"] : []
+            options: question_type === "SELECT" || question_type === "MULTISELECT" ? ["Option 1"] : []
         }
         setDefinedFields([...definedFields, newField])
         setActiveFieldIndex(definedFields.length)
