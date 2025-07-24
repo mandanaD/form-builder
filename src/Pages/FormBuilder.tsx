@@ -349,7 +349,7 @@ const FormBuilder: React.FC = () => {
                     )}
                 </div>
                 <div className="w-full rounded-b-2xl bg-white border-t border-gray-300 sticky bottom-0 py-2 z-[50]">
-                    <div className="mr-auto w-fit px-4">
+                    <div className="ml-auto w-fit px-4">
                         <NormalBtn
                             type="button"
                             onClick={handleFormSubmit}
