@@ -31,7 +31,7 @@ const CheckboxFieldEditor = ({field, removeOption, updateOption, addOption}: che
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="text-xs sm:text-sm text-gray-400">
-                    {field.placeholder || "انتخاب گزینه‌ها"}
+                    {field.placeholder || "Select options"}
                 </div>
                 <FontAwesomeIcon icon={faChevronDown} className={`mr-auto transition-transform ${
                     isOpen ? "rotate-180" : "rotate-0"
@@ -53,7 +53,7 @@ const CheckboxFieldEditor = ({field, removeOption, updateOption, addOption}: che
                             />
                             {editIndex === index ? (
                                 <button
-                                    title="تایید"
+                                    title="Confirm"
                                     onClick={() => handleSave(index)}
                                     className="size-[30px] grid place-content-center rounded-lg text-green-600 cursor-pointer transition-all ease-linear hover:text-green-700 border-2 border-gray-200 bg-gray-100"
                                 >
@@ -62,14 +62,14 @@ const CheckboxFieldEditor = ({field, removeOption, updateOption, addOption}: che
                             ) : (
                                 <div className="flex gap-1">
                                     <button
-                                        title="ویرایش"
+                                        title="Edit"
                                         onClick={() => handleEditClick(index)}
                                         className="size-[30px] grid place-content-center rounded-lg text-gray-500 cursor-pointer transition-all ease-linear hover:text-blue-600 border-2 border-gray-200 bg-gray-100"
                                     >
                                         <FontAwesomeIcon icon={faPen}/>
                                     </button>
                                     <button
-                                        title="حذف"
+                                        title="Delete"
                                         onClick={() => handleDelete(index)}
                                         className="size-[30px] grid place-content-center rounded-lg text-red-500 cursor-pointer transition-all ease-linear hover:text-red-600 border-2 border-gray-200 bg-gray-100"
                                     >
@@ -83,7 +83,7 @@ const CheckboxFieldEditor = ({field, removeOption, updateOption, addOption}: che
                         onClick={addOption}
                         className="flex items-center justify-between text-xs underline text-gray-500 gap-2 px-4 py-2 cursor-pointer"
                     >
-                        افزودن انتخاب
+                        Add Option
                     </div>
                 </div>
             )}
