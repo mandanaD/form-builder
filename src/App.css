@@ -23,9 +23,9 @@ body {
 }
 
 input:-webkit-autofill {
-    background-color: #f3f4f6 !important; /* Replace with your desired background color */
-    box-shadow: 0 0 0 30px #f3f4f6 inset !important; /* Prevents the shadow from showing the autofill background */
-    color: inherit !important; /* Keeps text color unchanged */
+    background-color: #f3f4f6 !important; 
+    box-shadow: 0 0 0 30px #f3f4f6 inset !important;
+    color: inherit !important;
 }
 
 input:-moz-autofill {
