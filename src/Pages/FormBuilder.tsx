@@ -139,8 +139,7 @@ const FormBuilder: React.FC = () => {
     };
 
     return (
-        <main
-            className="min-h-screen flex p-2 border sm:border-transparent border-gray-300 rounded-t-4xl sm:rounded-2xl">
+        <>
             <DropDown
                 isVisible={isSetting || isOptionsOpen}
                 setIsVisible={handleDropdownClose}
@@ -374,7 +373,7 @@ const FormBuilder: React.FC = () => {
                     )}
                 </div>
             </div>
-        </main>
+        </>
     );
 };
 
