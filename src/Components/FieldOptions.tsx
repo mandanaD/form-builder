@@ -63,7 +63,7 @@ const FieldOptions = ({definedFields, setDefinedFields,setActiveFieldIndex,setIs
             </div>
             <div
                 onClick={() => setIsOptionsOpen(true)}
-                className={"bg-gray-700 z-30 md:hidden grid place-content-center min-w-12 min-h-12 size-12 bottom-20 mr-2 rounded-full fixed "}>
+                className={"left-[4%] bg-gray-700 z-30 md:hidden grid place-content-center min-w-12 min-h-12 size-12 bottom-20 mr-2 rounded-full fixed "}>
                 <FontAwesomeIcon icon={faPlus} className={"text-xl text-white"}/>
             </div>
         </>
