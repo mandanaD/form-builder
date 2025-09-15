@@ -312,7 +312,7 @@ const FormBuilder: React.FC = () => {
                                                     <FontAwesomeIcon icon={faPlus} className="text-xs"/>
                                                 </button>
                                             </div>
-                                            {definedFields[activeFieldIndex].options.map((opt, i) => (
+                                            {definedFields[activeFieldIndex]?.options.map((opt, i) => (
                                                 <input
                                                     key={i}
                                                     value={opt}
@@ -330,7 +330,7 @@ const FormBuilder: React.FC = () => {
                                     <div className="flex items-center mt-4 gap-2 text-[13px] text-gray-600">
                                         <input
                                             type="checkbox"
-                                            checked={definedFields[activeFieldIndex].required}
+                                            checked={definedFields[activeFieldIndex]?.required}
                                             onChange={(e) => updateField("required", e.target.checked)}
                                             className="sr-only peer"
                                         />
@@ -338,17 +338,17 @@ const FormBuilder: React.FC = () => {
                                             type="button"
                                             dir="ltr"
                                             className={`min-w-12 h-6 flex items-center rounded-full px-1 cursor-pointer ${
-                                                definedFields[activeFieldIndex].required ? "bg-teal-500" : "bg-gray-300"
+                                                definedFields[activeFieldIndex]?.required ? "bg-teal-500" : "bg-gray-300"
                                             }`}
-                                            onClick={() => updateField("required", !definedFields[activeFieldIndex].required)}
+                                            onClick={() => updateField("required", !definedFields[activeFieldIndex]?.required)}
                                         >
                                             <div
                                                 className={`w-4 h-4 rounded-full bg-white shadow-md transform transition-transform ${
-                                                    definedFields[activeFieldIndex].required ? "translate-x-6" : ""
+                                                    definedFields[activeFieldIndex]?.required ? "translate-x-6" : ""
                                                 }`}
                                             />
                                         </button>
-                                        {definedFields[activeFieldIndex].required ? "Required" : "" +
+                                        {definedFields[activeFieldIndex]?.required ? "Required" : "" +
                                             "Optional"}
                                     </div>
                                 </div>
